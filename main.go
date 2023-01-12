@@ -57,7 +57,7 @@ func intersect_sphere(origin rl.Vector3, ray rl.Vector3, sph sphere) (float32, f
 
 func trace_ray(origin rl.Vector3, ray rl.Vector3, scene []sphere, lights []light_source) rl.Vector3 {
 	closest_r := r_max
-	color := rl.NewVector3(0, 0, 0)
+	color := rl.NewVector3(1, 1, 1)
 	sphere_num := len(scene)
 
 	for s := 0; s < sphere_num; s++ {
@@ -126,7 +126,7 @@ func main() {
 	origin := rl.NewVector3(0, 0, 0)
 	ray := rl.NewVector3(0, 0, 0)
 	canvas := rl.GenImageColor(int(SCREEN_WIDTH), int(SCREEN_HEIGHT), rl.Black)
-	color := rl.NewVector3(0, 0, 0)
+	color := rl.NewVector3(1, 1, 1)
 
 	lights := make([]light_source, 3)
 
@@ -182,10 +182,10 @@ func main() {
 	for !rl.WindowShouldClose() {
 		rl.BeginDrawing()
 
-		rl.ClearBackground(rl.Black)
+		rl.ClearBackground(rl.White)
 		rl.DrawTexture(texture, 0, 0, rl.White)
 
-		rl.DrawText(fmt.Sprintf("FPS: %d", rl.GetFPS()), 100, 100, 50, rl.White)
+		rl.DrawText(fmt.Sprintf("FPS: %d", rl.GetFPS()), 100, 100, 50, rl.Black)
 
 		rl.EndDrawing()
 	}
